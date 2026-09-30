@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Position Sizing by the 1 % Rule: A Trader’s Math Guide — Markets Notebook</title>
+<meta name="description" content="A trader who risks a fixed fraction of their account on every trade can manage drawdowns predictably, but the arithmetic is often overlooked. The key is to translate a dollar risk (e.g., $100 on a">
+<link rel="canonical" href="https://marketsnotebook.github.io/position-sizing-by-the-1-rule-a-trader-s-math-guide/">
+<link rel="alternate" type="application/rss+xml" title="Markets Notebook" href="https://marketsnotebook.github.io/feed.xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Position Sizing by the 1 % Rule: A Trader’s Math Guide", "datePublished": "2026-09-30", "author": {"@type": "Organization", "name": "Markets Notebook"}, "publisher": {"@type": "Organization", "name": "Markets Notebook"}, "mainEntityOfPage": "https://marketsnotebook.github.io/position-sizing-by-the-1-rule-a-trader-s-math-guide/"}</script>
+<style>*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fbfaf7;color:#1f2328;font:18px/1.65 Georgia, 'Iowan Old Style', serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+header.site{border-bottom:1px solid #e6e1d8;padding:28px 0 18px;margin-bottom:34px}
+header.site a.brand{font:700 1.35rem/1.2 system-ui, sans-serif;color:#1f2328;text-decoration:none}
+header.site p{margin:.35rem 0 0;color:#6b6b6b;font:15px/1.5 system-ui, sans-serif}
+nav{margin-top:.7rem;font:14px system-ui, sans-serif}nav a{color:#6b6b6b;margin-right:1.1rem;text-decoration:none}
+nav a:hover{color:#8a3b12}a{color:#8a3b12}
+h1{font:700 2.05rem/1.2 system-ui, sans-serif;margin:.2rem 0 .6rem;letter-spacing:-.01em}
+h2{font:700 1.35rem/1.3 system-ui, sans-serif;margin:2.1rem 0 .6rem}h3{font:600 1.1rem/1.35 system-ui, sans-serif;margin:1.6rem 0 .4rem}
+.meta{color:#6b6b6b;font:14px system-ui, sans-serif;margin-bottom:1.6rem}
+blockquote{margin:1.2rem 0;padding:.2rem 1.1rem;border-left:3px solid #8a3b12;color:#6b6b6b}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;font-size:.92em}
+th,td{border:1px solid #e6e1d8;padding:7px 10px;text-align:left;vertical-align:top}
+ul.posts{list-style:none;padding:0}ul.posts li{margin:0 0 1.6rem}
+ul.posts a.t{font:600 1.15rem/1.35 system-ui, sans-serif;text-decoration:none;color:#1f2328}
+ul.posts a.t:hover{color:#8a3b12}ul.posts p{margin:.3rem 0 0;color:#6b6b6b;font-size:.95em}
+ul.posts time{font:13px system-ui, sans-serif;color:#6b6b6b}
+footer.site{border-top:1px solid #e6e1d8;margin:56px 0 0;padding:20px 0 40px;color:#6b6b6b;font:14px/1.5 system-ui, sans-serif}
+hr{border:0;border-top:1px solid #e6e1d8;margin:2rem 0}code{font-size:.9em}
+</style></head>
+<body><div class="wrap">
+<header class="site"><a class="brand" href="https://marketsnotebook.github.io/">Markets Notebook</a><p>Plain-language notes on how retail trading accounts actually work.</p><nav><a href="https://marketsnotebook.github.io/">Articles</a><a href="https://marketsnotebook.github.io/about/">About</a><a href="https://marketsnotebook.github.io/feed.xml">RSS</a></nav></header>
+<main><article><h1>Position Sizing by the 1 % Rule: A Trader’s Math Guide</h1><div class="meta">September 30, 2026 · Markets Notebook</div>
+<p>A trader who risks a fixed fraction of their account on every trade can manage drawdowns predictably, but the arithmetic is often overlooked. The key is to translate a dollar risk (e.g., $100 on a $10,000 account) into a concrete lot size for a specific stop distance and currency pair. The following sections break down each step, highlight how numbers change across pairs, and show how to prevent rounding errors from inflating risk.</p>
+<h2>The 1 % Rule: Core Formula for Position Size</h2>
+<p>Fixed-percentage risk means you decide in advance what proportion of your account you are willing to lose on a single trade. Most retail traders adopt 1% as a baseline; aggressive scalpers might use 0.5%, and swing traders sometimes stretch to 2% when confidence is high.</p>
+<p>The general calculation is:</p>
+<p>position size (units) = (account balance × risk %) ÷ (stop distance in pips × pip value per unit)</p>
+<p>If you have a $10,000 account, risk 1% ($100), and place a 20-pip stop, the dollar risk per pip is $5. On a pair where a mini lot (10,000 units) is worth $1 per pip, you would trade 5 mini lots (50,000 units).</p>
+<p>The conversion from stop distance to dollars must be done first; otherwise, rounding the pip value later can shift your exposure by several dollars.</p>
+<p>A common oversight is ignoring the spread or any expected slippage when measuring the stop distance. If the spread is 2 pips and you set a 20-pip stop without accounting for it, the effective distance the market must move before your order is filled is 22 pips. This reduces the actual risk per pip and potentially breaches the 1% limit.</p>
+<h2>Pip Value Essentials: Why Pip Value Varies by Pair</h2>
+<p>Pip value is not a static $10 per standard lot for every instrument. It depends on three variables: the quote currency, the lot size you trade, and the current exchange rate when the quote currency is not USD.</p>
+<table>
+<thead>
+<tr>
+<th>Pair type</th>
+<th>Standard-lot pip value (100,000 units)</th>
+<th>Mini-lot (10,000 units)</th>
+<th>Micro-lot (1,000 units)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USD-quoted (e.g., EUR/USD)</td>
+<td>$10</td>
+<td>$1</td>
+<td>$0.10</td>
+</tr>
+<tr>
+<td>USD base (e.g., USD/JPY)</td>
+<td>≈ $9.09 at 110.00</td>
+<td>≈ $0.909</td>
+<td>≈ $0.0909</td>
+</tr>
+<tr>
+<td>Cross-rate (e.g., EUR/GBP)</td>
+<td>Varies – convert quote currency pip value to USD using the cross rate</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>For USD-quoted pairs, the calculation is straightforward because the quote currency is USD. For USD-base pairs, the pip value is expressed in the quote currency (JPY), so you must divide by the current exchange rate to convert to USD. At an USD/JPY price of 110.00, one pip on a standard lot is 0.01 JPY × 100,000 = 1,000 JPY, which equals $9.09. If the price moves to 100.00, the same pip equals $10.</p>
+<p>Cross rates require a two-step conversion: first, determine the pip value in the quote currency, then multiply by the conversion rate to your account currency (usually USD). Most trading platforms display an approximate pip value for the selected lot size, but it is good practice to verify it, especially when the pair&rsquo;s price is volatile.</p>
+<p><strong>Example:</strong> On EUR/USD, a 20-pip stop with a $5,000 account (risk $50) gives a per-pip risk of $2.50. Since a mini-lot pip value is $1, the required size is 2.5 mini lots (25,000 units).</p>
+<h2>Stop Distance in Pips: Measuring and Setting Realistic Stops</h2>
+<p>Stop distance is the absolute difference between entry price and stop-loss price, expressed in pips. Most major pairs use 4 decimal places, so 1 pip = 0.0001; JPY pairs use 2 decimal places, so 1 pip = 0.01.</p>
+<p>Setting the stop based on market structure – recent swing highs/lows, trendlines, or a multiple of the Average True Range (ATR) – is more reliable than applying a flat 20-pip rule. For a volatile pair like GBP/JPY, a 20-pip stop might be within normal price noise, leading to premature exits.</p>
+<p><strong>Illustrative calculation:</strong> A $20,000 account, 1% risk ($200), and a 50-pip stop yields a per-pip risk of $4. With a mini-lot pip value of $1, you would trade 4 mini lots (40,000 units). If your broker only allows 0.01-lot increments, you can enter 4.00 mini lots exactly. If it required 0.1-lot steps, you would round down to 4.0 mini lots, which is the same in this case.</p>
+<p>Always double-check the lot size after rounding. A 0.01-lot error on a mini-lot (10,000 units) changes the exposure by 100 units, which translates into a $0.10 difference per pip – negligible on small accounts but noticeable on high-frequency strategies.</p>
+<h2>Lot Size Rounding and Broker Minimums</h2>
+<p>Retail brokers typically permit lot sizes in increments of 0.01 (1,000 units) for mini-lot trading, while some micro-lot accounts allow 0.001 (100 units). The key rule is <strong>never round up</strong>; rounding up would increase the dollar risk beyond the target percentage.</p>
+<p>Suppose the exact size calculated is 2.37 lots. If the platform only supports 0.01 increments, you can enter 2.37 lots directly. If the platform limits you to 0.1-lot steps, you must round down to 2.3 lots, which reduces the risk by roughly 4% of the intended exposure – a safer outcome.</p>
+<p>Broker minimums also matter. Some firms enforce a minimum trade of 0.01 lots, meaning a $1,000 account cannot open a position smaller than 0.01 lots (1,000 units). If your computed size falls below that threshold, you must either increase the risk percentage or choose a tighter stop (or a different pair with a higher pip value).</p>
+<p><strong>Example:</strong> Risking $37.50 on a 15-pip stop gives a per-pip risk of $2.50. With a micro-lot pip value of $0.10, you need 25 micro lots (2.5 standard lots). If the broker only allows 0.01-lot increments, you could trade 2.50 lots (250,000 units) or, using micro-lot notation, 25,000 micro units – both satisfy the risk constraint.</p>
+<h2>Why the Same Stop Gives Different Sizes Across Pairs</h2>
+<p>Because pip value changes with the quote currency, a 20-pip stop does not represent the same dollar amount on every pair. On EUR/USD, a mini-lot move of 20 pips equals $20. On USD/JPY at 110.00, the same 20 pips equals about $18.18 (0.909 × 20).</p>
+<p>Cross rates add a conversion step. Suppose your account is in USD and you trade EUR/GBP. First, calculate the pip value in GBP (generally £0.10 per micro-lot), then multiply by the current GBP/USD rate to express it in USD. If GBP/USD is 1.30, each pip on a mini lot is $1.30, so a 20-pip stop risks $26.</p>
+<p><strong>Concrete illustration:</strong></p>
+<ul>
+<li>Account: $10,000</li>
+<li>Risk: 1% → $100</li>
+<li>Stop: 50 pips</li>
+</ul>
+<p><em>EUR/USD</em>: pip value (mini) = $1 → risk per pip = $2 → lots = 2 mini lots.</p>
+<p><em>USD/JPY</em> (price 110.00): pip value (mini) ≈ $0.909 → risk per pip = $0.909 × 50 = $45.45 → required mini lots = $100 ÷ $45.45 ≈ 2.2 → round down to 2.0 mini lots.</p>
+<p>The result shows that the same dollar risk and same stop distance lead to different lot sizes because the underlying pip values differ. Therefore, you must recompute the size for each instrument; copying a lot size from one pair to another defeats the purpose of the fixed-percentage risk method.</p>
+<h2>Worked Examples: From Account to Lots in Three Trades</h2>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Account</th>
+<th>Risk %</th>
+<th>Dollar risk</th>
+<th>Pair &amp; price</th>
+<th>Stop (pips)</th>
+<th>Pip value (mini)</th>
+<th>Lots (mini)</th>
+<th>Rounded lots</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>$25,000</td>
+<td>1% → $250</td>
+<td>EUR/USD (1.1050)</td>
+<td>25</td>
+<td>$1</td>
+<td>10 mini lots (1 standard)</td>
+<td>10.00</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>$10,000</td>
+<td>1% → $100</td>
+<td>GBP/USD (1.2850)</td>
+<td>40</td>
+<td>$1</td>
+<td>2.5 mini lots (25,000 units)</td>
+<td>2.50</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>$50,000</td>
+<td>1% → $500</td>
+<td>USD/JPY (110.00)</td>
+<td>30</td>
+<td>$0.909</td>
+<td>1.83 mini lots (18,300 units)</td>
+<td>1.80 (if 0.01-lot step)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Explanation of Example 3:</strong>
+* Pip value per mini lot = (0.01 JPY × 10,000) ÷ 110.00 = $0.909.
+* Dollar risk per pip = $500 ÷ 30 = $16.67.
+* Required mini lots = $16.67 ÷ $0.909 ≈ 18.33 mini lots = 1.833 standard lots.
+* Rounding down to the nearest 0.01 lot gives 1.80 standard lots (18,000 units), keeping risk under $500.</p>
+<p>These calculations also illustrate that pip value must be refreshed whenever the quoted price moves significantly. A shift from 110.00 to 100.00 would raise the pip value from $0.909 to $1.00 per mini lot, changing the lot size needed for the same risk.</p>
+<p>Most traders automate this process with a spreadsheet or a built-in calculator, but understanding each component prevents accidental over-risking when platform data is stale or when a broker’s “pip value” display lags behind the market price.</p>
+<h2>Common Pitfalls and How to Avoid Them</h2>
+<ul>
+<li><strong>Using the wrong pip value:</strong> Assuming every pair offers $10 per pip on a standard lot leads to under- or over-sized trades. Always verify the pip value for the specific instrument and lot size before sizing.</li>
+<li><strong>Neglecting currency conversion:</strong> If your account is USD-denominated and you trade a pair quoted in GBP, the pip value computed in GBP must be converted at the current GBP/USD rate. Failing to do so makes the risk calculation off by the exchange-rate factor.</li>
+<li><strong>Rounding up:</strong> Adding a “nice” number like 2.5 lots when the exact size is 2.46 introduces extra risk (about 4% above the target). Round down to the allowable increment.</li>
+<li><strong>Ignoring swaps and commissions:</strong> For longer-term positions, overnight swap charges or per-trade commissions can shift the net risk. Include an estimate of these costs in the stop-loss distance (e.g., add 0.5 pips for expected swap) to keep the true dollar risk within the 1% boundary.</li>
+<li><strong>Static stop distances:</strong> Applying a flat 20-pip stop to all pairs disregards volatility differences. Use a volatility-based method such as ATR (e.g., 1.5 × ATR) to set a stop that reflects current market conditions, then recompute the lot size accordingly.</li>
+</ul>
+<p><strong>Mitigation checklist</strong> before pressing “Buy” or “Sell”:</p>
+<ol>
+<li>Set the stop based on structure or ATR.</li>
+<li>Measure the stop in pips, adding spread and expected slippage.</li>
+<li>Look up the current pip value for the pair and chosen lot size.</li>
+<li>Apply the core formula to obtain the exact lot amount.</li>
+<li>Round down to the broker’s minimum increment.</li>
+<li>Verify that the resulting dollar risk ≤ account × risk %.</li>
+</ol>
+<p>Following these steps makes the 1% rule reliable, not just a theoretical ideal.</p>
+<h2>Key takeaways</h2>
+<ul>
+<li>Always use the formula: <strong>position size = (account equity × risk %) ÷ (stop loss in pips × pip value per unit)</strong>.</li>
+<li>Pip value varies by currency pair, lot size, and current exchange rate; verify the platform’s figure for each instrument.</li>
+<li>Round down to the nearest allowable lot increment; never round up, as it pushes risk above the intended percentage.</li>
+<li>Recompute position size for every trade because both stop distance and pip value change with market conditions and pair selection.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if my broker only allows 0.1 lot increments?</h3>
+<p>Round down to the nearest 0.1 lot. For example, if the exact size is 2.37 lots, use 2.3 lots. This keeps risk below your 1% target. If the minimum increment is 0.01, you can use the full 2.37 lots.</p>
+<h3>How do I adjust position size if the stop is too close or too far?</h3>
+<p>If the stop distance changes, recompute the size using the core formula: <strong>size = (account × risk %) ÷ (stop distance × pip value per unit)</strong>. A wider stop reduces the number of lots; a tighter stop allows more lots, but the dollar risk stays constant at the predetermined percentage.</p>
+<h3>Why does the same 20-pip stop result in different dollar risk on different pairs?</h3>
+<p>Because pip value varies by pair. On EUR/USD, 1 pip on a mini lot equals $1, so 20 pips risk $20. On USD/JPY at 110, 1 pip on a mini lot equals about $0.909, so 20 pips risk roughly $18.18. To keep the dollar risk identical, you must adjust the lot size for each instrument.</p>
+<hr />
+<p><em>This article is for educational purposes only and is not investment advice. Trading leveraged products involves significant risk of loss.</em></p></article></main>
+<footer class="site">This site publishes general educational material about trading mechanics. It is not investment advice. Trading leveraged products such as forex and CFDs carries a high risk of losing money.<br>© 2026 Markets Notebook</footer>
+</div></body></html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://marketsnotebook.github.io/sitemap.xml
