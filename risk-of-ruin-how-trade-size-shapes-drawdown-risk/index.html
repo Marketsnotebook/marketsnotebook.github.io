@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Risk of Ruin: How Trade Size Shapes Drawdown Risk — Markets Notebook</title>
+<link rel="canonical" href="https://marketsnotebook.github.io/risk-of-ruin-how-trade-size-shapes-drawdown-risk/">
+<link rel="alternate" type="application/rss+xml" title="Markets Notebook" href="https://marketsnotebook.github.io/feed.xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Risk of Ruin: How Trade Size Shapes Drawdown Risk", "datePublished": "2026-11-02", "author": {"@type": "Organization", "name": "Markets Notebook"}, "publisher": {"@type": "Organization", "name": "Markets Notebook"}, "mainEntityOfPage": "https://marketsnotebook.github.io/risk-of-ruin-how-trade-size-shapes-drawdown-risk/"}</script>
+<style>*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fbfaf7;color:#1f2328;font:18px/1.65 Georgia, 'Iowan Old Style', serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+header.site{border-bottom:1px solid #e6e1d8;padding:28px 0 18px;margin-bottom:34px}
+header.site a.brand{font:700 1.35rem/1.2 system-ui, sans-serif;color:#1f2328;text-decoration:none}
+header.site p{margin:.35rem 0 0;color:#6b6b6b;font:15px/1.5 system-ui, sans-serif}
+nav{margin-top:.7rem;font:14px system-ui, sans-serif}nav a{color:#6b6b6b;margin-right:1.1rem;text-decoration:none}
+nav a:hover{color:#8a3b12}a{color:#8a3b12}
+h1{font:700 2.05rem/1.2 system-ui, sans-serif;margin:.2rem 0 .6rem;letter-spacing:-.01em}
+h2{font:700 1.35rem/1.3 system-ui, sans-serif;margin:2.1rem 0 .6rem}h3{font:600 1.1rem/1.35 system-ui, sans-serif;margin:1.6rem 0 .4rem}
+.meta{color:#6b6b6b;font:14px system-ui, sans-serif;margin-bottom:1.6rem}
+blockquote{margin:1.2rem 0;padding:.2rem 1.1rem;border-left:3px solid #8a3b12;color:#6b6b6b}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;font-size:.92em}
+th,td{border:1px solid #e6e1d8;padding:7px 10px;text-align:left;vertical-align:top}
+ul.posts{list-style:none;padding:0}ul.posts li{margin:0 0 1.6rem}
+ul.posts a.t{font:600 1.15rem/1.35 system-ui, sans-serif;text-decoration:none;color:#1f2328}
+ul.posts a.t:hover{color:#8a3b12}ul.posts p{margin:.3rem 0 0;color:#6b6b6b;font-size:.95em}
+ul.posts time{font:13px system-ui, sans-serif;color:#6b6b6b}
+footer.site{border-top:1px solid #e6e1d8;margin:56px 0 0;padding:20px 0 40px;color:#6b6b6b;font:14px/1.5 system-ui, sans-serif}
+hr{border:0;border-top:1px solid #e6e1d8;margin:2rem 0}code{font-size:.9em}
+</style></head>
+<body><div class="wrap">
+<header class="site"><a class="brand" href="https://marketsnotebook.github.io/">Markets Notebook</a><p>Plain-language notes on how retail trading accounts actually work.</p><nav><a href="https://marketsnotebook.github.io/">Articles</a><a href="https://marketsnotebook.github.io/about/">About</a><a href="https://marketsnotebook.github.io/feed.xml">RSS</a></nav></header>
+<main><article><h1>Risk of Ruin: How Trade Size Shapes Drawdown Risk</h1><div class="meta">November 2, 2026 · Markets Notebook</div>
+<p>A strategy can make money over time and still put an account under pressure if each trade risks too much. The question is not only whether a trade might win, but how much equity remains after several losses—and whether the account can keep trading.</p>
+<h2>Risk of ruin is about surviving losses, not predicting wins</h2>
+<p>Risk of ruin describes the chance that losses leave an account unable to meet its trading or financial goals. It does not necessarily mean the balance reaches zero. An account may be effectively ruined for its owner if a drawdown makes the remaining capital too small for the strategy, breaches a personal loss limit, or leads to forced liquidation.</p>
+<p>Win rate alone cannot show whether a strategy is profitable or how risky it is. A strategy that wins 60% of trades may still lose money if its average loss is large relative to its average win. Costs matter too: spreads, commissions and overnight financing can turn a small apparent edge into a loss. The size and sequence of losing trades also affect how much capital is needed to continue.</p>
+<p>Recovery becomes harder as the drawdown grows. After a 10% loss, an account needs an 11.1% gain on its reduced balance to return to its starting value. After a 50% loss, it needs a 100% gain. These calculations assume no further losses or withdrawals, but show why limiting drawdowns matters.</p>
+<p>For forex and CFDs, the loss at a planned stop is not always the loss actually recorded. Spreads can widen, stops can fill at worse prices in fast markets, and gaps can move prices beyond stop levels. These costs and execution effects can make a position riskier than its initial calculation suggests.</p>
+<h2>The same losing streak has very different consequences</h2>
+<p>Consider an account where each loss is capped at a constant fraction of current equity. Assume there are no deposits or withdrawals, and ignore trading costs and slippage. After each loss, the next position is sized using the smaller remaining balance. This is fixed-fraction sizing, so losses compound rather than subtracting the same dollar amount each time.</p>
+<p>Under those assumptions, 10 consecutive losses at 1% risk per trade leave about 90.4% of the starting equity. At 2% risk, about 81.7% remains. At 5%, the balance falls to about 59.9%; at 10%, it falls to about 34.9%. The same sequence therefore creates a 9.6% drawdown at 1% risk and a 65.1% drawdown at 10% risk.</p>
+<p>These figures describe the impact of a 10-loss streak, not its probability. That probability depends on the strategy’s win rate and how trade outcomes behave. If outcomes were independent and the probability of a loss were 40%, the probability of 10 specified consecutive losses would be 0.4 raised to the power of 10. But real trading results may not be independent: market conditions can persist, and a strategy may perform worse as volatility or liquidity changes.</p>
+<h2>A practical table: risk per trade versus 10-loss drawdown</h2>
+<p>Use the table as a stress test. It shows how much equity remains if 10 losses occur in a row, assuming each loss is the stated percentage of current equity. It does not estimate the chance of that streak and excludes costs, slippage and differences between planned and actual stop fills.</p>
+<table>
+<thead>
+<tr>
+<th>Risk of current equity per trade</th>
+<th style="text-align: right;">Equity remaining after 10 losses</th>
+<th style="text-align: right;">Drawdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1%</td>
+<td style="text-align: right;">90.4%</td>
+<td style="text-align: right;">9.6%</td>
+</tr>
+<tr>
+<td>2%</td>
+<td style="text-align: right;">81.7%</td>
+<td style="text-align: right;">18.3%</td>
+</tr>
+<tr>
+<td>5%</td>
+<td style="text-align: right;">59.9%</td>
+<td style="text-align: right;">40.1%</td>
+</tr>
+<tr>
+<td>10%</td>
+<td style="text-align: right;">34.9%</td>
+<td style="text-align: right;">65.1%</td>
+</tr>
+</tbody>
+</table>
+<p>The figures follow the formula: equity remaining = starting equity × (1 − risk fraction) raised to the number of losses. For example, at 5% risk, the calculation is 100% × 0.95 raised to the power of 10, or about 59.9%. This simplified model may understate the drawdown if losses exceed the planned amount or additional charges are deducted.</p>
+<h2>Fixed-fraction sizing limits the damage as equity falls</h2>
+<p>With fixed-fraction sizing, a trader sets a maximum percentage of current equity to risk on a trade, then chooses a position size based on the stop distance. The process is: set the risk limit in currency, determine the loss per unit if the stop is hit, and size the position so the estimated loss fits within the limit.</p>
+<p>For example, on a $10,000 account, a 1% risk limit is $100. If a stop is 50 pips away, the position should be sized so that a 50-pip move against it represents about $100 before costs. If the pip value is $10 per pip for the chosen position, the stop-distance loss would be $500, too high for this limit. A position one-fifth that size would have an estimated stop loss of $100, before spread, commission and slippage.</p>
+<p>The dollar amount at risk then falls as equity declines. After the account drops from $10,000 to $9,000, a 1% limit means the next planned loss is $90, not $100. This slows the rate at which dollar losses compound, but does not restore lost equity or prevent a losing streak.</p>
+<p>Fixed-dollar sizing works differently. If a trader continues to risk $100 after the balance falls to $9,000, that is about 1.11% of the account, rather than 1%. The percentage rises further as the balance shrinks. Traders using a fixed-dollar amount should recalculate it regularly if they intend to keep risk proportional to equity.</p>
+<h2>Stops, leverage and broker execution can change the real risk</h2>
+<p>A stop-loss is an intended exit level, not a guarantee of the exit price. In a fast market, at a market open or around a news release, there may be insufficient liquidity at the stop price. The order may fill at a worse price; a gap may leave no trades available near the stop. The actual loss can therefore exceed the planned loss.</p>
+<p>Leverage lets a small margin deposit control a larger market exposure. It can magnify gains and losses, but does not cap the amount that can be lost on a position. Margin rules may also close positions if account equity falls below required levels, potentially before a planned stop can take effect. Understand the broker’s margin close-out rules and how they apply across open positions.</p>
+<p>Before comparing brokers, check the details that affect position risk and the ability to exit:</p>
+<ul>
+<li>Contract size and the value of a pip or point for each product.</li>
+<li>Minimum trade size and whether the platform allows the intended position size.</li>
+<li>How stop orders are triggered and executed, including any stated treatment of gaps or slippage.</li>
+<li>Margin requirements, close-out thresholds and how they are calculated.</li>
+<li>Whether negative-balance protection applies to the account and products being traded.</li>
+</ul>
+<p>Include spread, commission and overnight financing in the estimate. For a position held through a rollover, financing can add to the loss even if the price does not move. A position that appears to risk $100 from entry to stop may exceed that limit once the spread, commission and likely financing are included. Execution quality and costs can vary by instrument, market conditions and account type, so check the relevant contract specifications and account terms rather than relying only on a headline figure.</p>
+<h2>Choose a risk limit you can withstand in a bad run</h2>
+<p>Start with the maximum drawdown you can accept, then test how many consecutive losses at a proposed risk level would bring the account close to it. For example, a trader who could not tolerate a 20% drawdown should not assume that a strategy’s past win rate will prevent one. The 10-loss table shows that 2% risk per trade produces an 18.3% drawdown under the stated assumptions.</p>
+<p>For a target maximum drawdown D after n consecutive losses, estimate the per-trade fraction as 1 − (1 − D)^(1/n). For a 20% drawdown over 10 losses, the estimate is 1 − 0.8^(1/10), or about 2.2% per trade. This is a planning aid, not a guarantee: costs, slippage and losses beyond the planned stop can increase the realized drawdown.</p>
+<p>Do not increase size to recover losses. That raises the amount at stake when the account is already under pressure and can turn a manageable setback into a larger one. Nor should a high historical win rate be treated as protection against future losing streaks. A sequence absent from the available trading history can still occur later.</p>
+<p>Reassess the limit if the strategy, volatility, costs or leverage changes. A stop distance that worked in a quiet market may be unsuitable when price movements grow; keeping the same dollar risk may then require a smaller position. Leave enough margin for adverse price movement and charges, and check that a planned stop is not likely to be overtaken by a margin close-out first.</p>
+<h2>Key takeaways</h2>
+<ul>
+<li>Win rate is only one part of risk; average win and loss size, trading costs and position sizing matter too.</li>
+<li>Repeated losses compound: risking 5% per trade leaves about 59.9% of equity after 10 losses under the simplified assumptions.</li>
+<li>Fixed-fraction sizing reduces dollar risk as the account shrinks, but does not prevent losses.</li>
+<li>Treat stop-based risk as an estimate and account for leverage, execution and trading costs.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does a higher win rate always mean lower risk of ruin?</h3>
+<p>No. Average win and loss size, trading costs, position size and losing-streak risk also matter. A high win rate can coexist with an overall losing strategy if occasional losses are large enough to outweigh many smaller gains. The sequence of outcomes matters too: a run of losses can put pressure on an account even if the strategy is profitable over a larger sample.</p>
+<h3>Does fixed-fraction sizing prevent a losing streak?</h3>
+<p>No. It limits how much each loss takes from the remaining account balance, but cannot prevent losses or guarantee survival. Because the dollar risk falls as equity falls, it can slow the decline compared with keeping the same dollar amount at risk. Actual losses may still exceed the planned fraction if costs, gaps or slippage are material.</p>
+<h3>What percentage should I risk on each forex or CFD trade?</h3>
+<p>There is no universally safe percentage. Choose a limit based on your drawdown tolerance and stress-test it against losing streaks, costs and possible slippage. Also check whether the intended position size is available on the account, how the broker handles stop execution and margin close-out, and whether overnight financing applies. A percentage that appears manageable before accounting for these factors may be too high in practice.</p>
+<hr />
+<p><em>This article is for educational purposes only and is not investment advice. Trading leveraged products involves significant risk of loss.</em></p></article></main>
+<footer class="site">This site publishes general educational material about trading mechanics. It is not investment advice. Trading leveraged products such as forex and CFDs carries a high risk of losing money.<br>© 2026 Markets Notebook</footer>
+</div></body></html>
