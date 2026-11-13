@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Average True Range: Set Stop Distances and Keep Risk Consistent — Markets Notebook</title>
+<link rel="canonical" href="https://marketsnotebook.github.io/average-true-range-set-stop-distances-and-keep-risk-consistent/">
+<link rel="alternate" type="application/rss+xml" title="Markets Notebook" href="https://marketsnotebook.github.io/feed.xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Average True Range: Set Stop Distances and Keep Risk Consistent", "datePublished": "2026-11-13", "author": {"@type": "Organization", "name": "Markets Notebook"}, "publisher": {"@type": "Organization", "name": "Markets Notebook"}, "mainEntityOfPage": "https://marketsnotebook.github.io/average-true-range-set-stop-distances-and-keep-risk-consistent/"}</script>
+<style>*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fbfaf7;color:#1f2328;font:18px/1.65 Georgia, 'Iowan Old Style', serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+header.site{border-bottom:1px solid #e6e1d8;padding:28px 0 18px;margin-bottom:34px}
+header.site a.brand{font:700 1.35rem/1.2 system-ui, sans-serif;color:#1f2328;text-decoration:none}
+header.site p{margin:.35rem 0 0;color:#6b6b6b;font:15px/1.5 system-ui, sans-serif}
+nav{margin-top:.7rem;font:14px system-ui, sans-serif}nav a{color:#6b6b6b;margin-right:1.1rem;text-decoration:none}
+nav a:hover{color:#8a3b12}a{color:#8a3b12}
+h1{font:700 2.05rem/1.2 system-ui, sans-serif;margin:.2rem 0 .6rem;letter-spacing:-.01em}
+h2{font:700 1.35rem/1.3 system-ui, sans-serif;margin:2.1rem 0 .6rem}h3{font:600 1.1rem/1.35 system-ui, sans-serif;margin:1.6rem 0 .4rem}
+.meta{color:#6b6b6b;font:14px system-ui, sans-serif;margin-bottom:1.6rem}
+blockquote{margin:1.2rem 0;padding:.2rem 1.1rem;border-left:3px solid #8a3b12;color:#6b6b6b}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;font-size:.92em}
+th,td{border:1px solid #e6e1d8;padding:7px 10px;text-align:left;vertical-align:top}
+ul.posts{list-style:none;padding:0}ul.posts li{margin:0 0 1.6rem}
+ul.posts a.t{font:600 1.15rem/1.35 system-ui, sans-serif;text-decoration:none;color:#1f2328}
+ul.posts a.t:hover{color:#8a3b12}ul.posts p{margin:.3rem 0 0;color:#6b6b6b;font-size:.95em}
+ul.posts time{font:13px system-ui, sans-serif;color:#6b6b6b}
+footer.site{border-top:1px solid #e6e1d8;margin:56px 0 0;padding:20px 0 40px;color:#6b6b6b;font:14px/1.5 system-ui, sans-serif}
+hr{border:0;border-top:1px solid #e6e1d8;margin:2rem 0}code{font-size:.9em}
+</style></head>
+<body><div class="wrap">
+<header class="site"><a class="brand" href="https://marketsnotebook.github.io/">Markets Notebook</a><p>Plain-language notes on how retail trading accounts actually work.</p><nav><a href="https://marketsnotebook.github.io/">Articles</a><a href="https://marketsnotebook.github.io/about/">About</a><a href="https://marketsnotebook.github.io/feed.xml">RSS</a></nav></header>
+<main><article><h1>Average True Range: Set Stop Distances and Keep Risk Consistent</h1><div class="meta">November 13, 2026 · Markets Notebook</div>
+<p>A stop based on a fixed number of pips can be too close in a volatile market and unnecessarily wide in a quiet one. Average True Range (ATR) relates stop distance to recent price movement—but position size must change with that distance to keep the cash amount at risk consistent.</p>
+<h2>What ATR measures—and what it does not</h2>
+<p>Average True Range estimates how far an instrument has moved over a chosen set of bars. It is a volatility measure expressed in the instrument’s price units. For example, an ATR of 0.0080 on a forex pair means an average range of 0.0080 in its quoted price over the selected timeframe and lookback.</p>
+<p>ATR does not forecast whether price will rise or fall, or indicate the probability that a trade will succeed. A higher reading means the instrument has moved more over that period. It does not automatically mean the trade is riskier: risk also depends on position size, stop distance, contract specifications and execution.</p>
+<p>The timeframe matters. A 14-period ATR on a daily chart uses 14 daily bars; on an hourly chart, it uses 14 hourly bars. Those readings describe different horizons and are not interchangeable. Nor should raw ATR values be compared across instruments without considering price level, quote precision and pip or tick size. An ATR of 0.50 means different things for an instrument priced near 10 and one priced near 1,000.</p>
+<h2>How to calculate true range and average it</h2>
+<p>For each bar, true range is the greatest of three distances:</p>
+<ul>
+<li>High minus low</li>
+<li>Absolute value of high minus previous close</li>
+<li>Absolute value of low minus previous close</li>
+</ul>
+<p>The previous close captures movement across a gap between bars. A high-low calculation alone can miss that movement—for example, when a market opens well above the prior close and then trades within a narrow range.</p>
+<p>ATR averages true range over a selected number of bars. Fourteen periods is a common platform default, but it is not compulsory. A shorter lookback reacts more quickly to recent changes; a longer one smooths them. The right choice depends on the trade horizon and how the strategy uses volatility.</p>
+<p>For example, if three consecutive true ranges are 0.0080, 0.0100 and 0.0120, their simple average is (0.0080 + 0.0100 + 0.0120) / 3 = 0.0100. Many platforms use Wilder’s smoothing rather than a simple average, so readings can differ, particularly with limited historical data.</p>
+<h2>Choose an ATR multiple that fits the trade</h2>
+<p>A basic method sets the stop distance as ATR multiplied by a chosen factor. If ATR is 0.0080 and the factor is 1.5, the distance is 0.0120 in the instrument’s price units. For a long position, subtract that distance from the entry price; for a short, add it. Then check whether the stop fits the setup—for example, whether it sits beyond a relevant swing low or high rather than inside ordinary market noise.</p>
+<p>A smaller multiple puts the stop closer to entry. That limits the price distance to the stop but may leave the trade vulnerable to routine fluctuations. A larger multiple gives price more room, but increases the potential loss per unit. To keep cash risk steady, position size must fall as the stop widens.</p>
+<p>There is no universally correct ATR factor. A trader might test different multiples against the strategy’s timeframe, historical price behaviour, spread and execution costs. The aim is not simply to choose a wide stop to avoid being stopped out: a stop that invalidates the setup, or requires a position too small to meet contract minimums, may not be practical.</p>
+<h2>Size the position from the stop and cash-risk limit</h2>
+<p>Set the maximum cash amount to risk before calculating the position. Then divide that budget by the loss per unit if the stop is reached. In simplified form, position size = cash-risk budget / loss per unit at the stop. This assumes the stop fills at its trigger price and excludes costs, so the actual loss can be greater.</p>
+<p>For example, an account of $10,000 with a 1% risk limit has a $100 budget for the trade. If the stop is 0.005 away from entry, each unit of a USD-quoted position loses $0.005 at the stop, before costs. The theoretical size is $100 / $0.005 = 20,000 units. Contract minimums, margin rules and the broker’s instrument specification may require rounding down or choosing a different size.</p>
+<p>For a pair quoted in USD where one pip is 0.0001, a stop distance of 0.0120 is 120 pips. The cash risk is 120 multiplied by the position’s pip value. If the pip value is $2, the estimated loss at the stop is $240 before costs. The trader would need to reduce the position to fit a $100 risk budget. Pip value depends on the pair, position size and account currency, so calculate or check it for the actual trade rather than assume it.</p>
+<p>Recalculate size whenever ATR or the stop distance changes. Keeping the same lot size while widening the stop increases the potential cash loss. If the stop narrows, the same position size reduces the planned loss at the stop—but does not necessarily make the trade better suited to the strategy.</p>
+<h2>Account for pair conventions, CFDs and trading costs</h2>
+<p>Before sizing, confirm the instrument’s pip or tick size, contract size, quote currency and account currency. These determine how price movement translates into profit or loss. A pip value shown for a standard lot may not apply to a smaller position, and a pair’s profit may be calculated in a currency other than the account’s base currency. Conversion rates can affect the final cash figure.</p>
+<p>CFDs require the same care, but contract conventions vary by market and provider. Check the contract specification for the value per point, minimum trade size and any relevant currency conversion. An index CFD, commodity CFD and share CFD may express price movement and contract value differently; an ATR figure alone does not show how much a point of movement will cost.</p>
+<p>Include spread and commission in the trade plan, and allow for slippage where execution may be fast or liquidity limited. A stop-market order generally prioritizes execution after its trigger is reached, not a particular fill price. A gap or rapid move can result in a fill beyond the stop level; depending on the platform’s rules, a wider spread may also affect the trigger or closing price.</p>
+<p>When comparing broker specifications or platform ATR readings, use the same instrument, timeframe and price basis. Different feeds, session hours and candle construction can produce different bars and readings. Check whether charts use bid, ask or another price basis, and confirm how the broker defines the stop trigger. These details can matter when the planned stop is close to the spread or typical intraday movement.</p>
+<h2>Apply the method without treating ATR as a guarantee</h2>
+<p>Before entry, record the ATR timeframe and period, chosen multiple, stop price, cash-risk budget and calculated position size. Check the stop against the trade setup, then verify that the size fits the broker’s contract increments and margin requirements. This helps show whether changing volatility has altered the intended risk.</p>
+<p>Suppose a pair’s 14-day ATR rises from 0.0060 to 0.0090. With a 1.5 multiple, the planned stop distance grows from 0.0090 to 0.0135. To preserve the same cash-risk limit, reduce the position in proportion to the increase in stop distance, while accounting for pip value and costs. If the distance increases by 50% and all other inputs stay the same, the theoretical position size falls to two-thirds of its previous size.</p>
+<p>Avoid moving a stop farther away after entry merely because ATR has risen. Unless the position is reduced, moving the stop away increases the potential loss beyond the original plan. Test the full method—including entry, stop, position sizing, exits and trading costs—through back-testing or paper trading. A volatility-based distance is a sizing tool, not a substitute for checking whether market structure supports the stop.</p>
+<h2>Key takeaways</h2>
+<ul>
+<li>ATR measures recent price movement, not direction or the likelihood of a winning trade; its value depends on timeframe and lookback.</li>
+<li>Use an ATR multiple to set a stop distance, then check that the stop fits the trade setup.</li>
+<li>Set the cash-risk limit first and calculate position size from stop distance, pip or point value and account currency.</li>
+<li>Costs, contract specifications and slippage can make the actual loss differ from the planned amount.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What ATR period should I use?</h3>
+<p>Fourteen periods is a common starting point, not a rule. Match the period and chart timeframe to the trade horizon, then test the combination. A setting that works for a short-term strategy may not describe the volatility relevant to a longer-term position.</p>
+<h3>Does an ATR stop guarantee that I will lose only my planned amount?</h3>
+<p>No. Gaps, slippage, spread and execution conditions can produce a worse fill than the stop price. The cash-risk calculation estimates the loss based on an assumed exit price; it does not guarantee the maximum loss.</p>
+<h3>Can I compare ATR values between forex pairs?</h3>
+<p>Only after accounting for quote precision, price level and pip value. ATR is a price distance, not a standardized percentage or cash-risk measure. Two pairs with the same ATR can imply different pip distances or cash losses for a given position size.</p>
+<hr />
+<p><em>This article is for educational purposes only and is not investment advice. Trading leveraged products involves significant risk of loss.</em></p></article></main>
+<footer class="site">This site publishes general educational material about trading mechanics. It is not investment advice. Trading leveraged products such as forex and CFDs carries a high risk of losing money.<br>© 2026 Markets Notebook</footer>
+</div></body></html>
